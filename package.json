@@ -1,0 +1,24 @@
+{
+  "name": "rsschool-landing-page",
+  "version": "1.0.0",
+  "description": "personal project for studying",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jentlgiz/rsschool-landing-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jentlgiz/rsschool-landing-page/issues"
+  },
+  "homepage": "https://github.com/jentlgiz/rsschool-landing-page#readme",
+  "dependencies": {
+    "modern-normalize": "^3.0.1"
+  }
+}
