@@ -1,18 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- encoding -->
     <meta charset="UTF-8">
-    <!-- mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- title, seo -->
     <title>YVES — AFTERGLOW</title>
-    <!-- styles -->
-    <!-- open graph -->
-    <!-- favicons -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta
+        name="description"
+        content="A visual archive and artist landing page dedicated to Yves."
+    >
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <!-- header -->
-    <header class="header"></header>
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="header-inner">
+            <!-- Logo -->
+            <a href="index.html" class="logo" aria-label="Yves home">
+                YVES
+            </a>
+            <!-- Navigation -->
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li>
+                        <a href="#artist">Artist</a>
+                    </li>
+
+                    <li>
+                        <a href="#music">Music</a>
+                    </li>
+
+                    <li>
+                        <a href="#archive">Archive</a>
+                    </li>
+
+                    <li>
+                        <a href="catalog.html">Catalog</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Header controls -->
+            <div class="header-controls">
+                <button
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="Toggle light and dark theme"
+                >
+                    ◐
+                </button>
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                >
+                    ☰
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- ================= MAIN ================= -->
+    <main>
+        <!-- ================= HERO ================= -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">
+                    SEOUL / SOUTH KOREA
+                </p>
+                <h1 class="hero-title">
+                    YVES
+                </h1>
+                <div class="hero-meta">
+                    <p>HA SOO-YOUNG</p>
+                    <p>MUSICIAN · SONGWRITER · PERFORMER</p>
+                </div>
+                <a href="#music" class="button">
+                    EXPLORE MUSIC
+                </a>
+            </div>
+            <!-- Decorative circle -->
+            <div class="hero-orbit" aria-hidden="true">
+                <span></span>
+            </div>
+        </section>
+        <!-- ================= MUSIC ================= -->
+        <section class="music section" id="music">
+            <div class="section-heading">
+                <p class="eyebrow">
+                    01 / SELECTED WORKS
+                </p>
+
+                <h2>
+                    MUSIC
+                </h2>
+            </div>
+            <!-- Featured music -->
+            <div class="music-slider">
+                <article class="music-card">
+                    <div class="music-image">
+                        <img
+                            src="assets/images/loop.jpg"
+                            alt="Yves LOOP"
+                        >
+                    </div>
+                    <div class="music-info">
+                        <p class="card-number">
+                            01
+                        </p>
+                        <h3>
+                            LOOP
+                        </h3>
+                        <p>
+                            A hypnotic introduction to Yves' solo direction.
+                        </p>
+                        <span>
+                            SINGLE · 2024
+                        </span>
+                    </div>
+                </article>
+                <article class="music-card">
+                    <div class="music-image">
+                        <img
+                            src="assets/images/i-did.jpg"
+                            alt="Yves I DID"
+                        >
+                    </div>
+                    <div class="music-info">
+                        <p class="card-number">
+                            02
+                        </p>
+                        <h3>
+                            I DID
+                        </h3>
+                        <p>
+                            A playful and atmospheric chapter in the archive.
+                        </p>
+                        <span>
+                            EP · 2024
+                        </span>
+                    </div>
+                </article>
+                <article class="music-card">
+                    <div class="music-image">
+                        <img
+                            src="assets/images/soft-error.jpg"
+                            alt="Yves Soft Error"
+                        >
+                    </div>
+                    <div class="music-info">
+                        <p class="card-number">
+                            03
+                        </p>
+                        <h3>
+                            SOFT ERROR
+                        </h3>
+                        <p>
+                            An experimental entry within the Yves catalogue.
+                        </p>
+                        <span>
+                            RELEASE
+                        </span>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- ================= ARTIST ================= -->
+        <section class="artist section" id="artist">
+            <div class="section-heading">
+                <p class="eyebrow">
+                    02 / THE ARTIST
+                </p>
+                <h2>
+                    WHO IS<br>
+                    YVES?
+                </h2>
+            </div>
+            <div class="artist-content">
+                <div class="artist-image">
+                    <img
+                        src="assets/images/yves-portrait.jpg"
+                        alt="Yves portrait"
+                    >
+                </div>
+                <div class="artist-text">
+                    <p class="large-text">
+                        HA SOO-YOUNG, KNOWN AS YVES, IS A SOUTH KOREAN
+                        SINGER AND PERFORMER.
+                    </p>
+                    <p>
+                        Her work combines alternative pop, electronic
+                        textures and an intentionally distinctive visual
+                        identity.
+                    </p>
+                    <a href="#archive" class="text-link">
+                        VIEW TIMELINE →
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- ================= ARCHIVE PREVIEW ================= -->
+        <section class="archive section" id="archive">
+            <div class="section-heading">
+                <p class="eyebrow">
+                    03 / ARCHIVE
+                </p>
+                <h2>
+                    THE<br>
+                    ARCHIVE
+                </h2>
+            </div>
+            <div class="archive-intro">
+                <p>
+                    Explore releases, music videos and collaborations
+                    across Yves' catalogue.
+                </p>
+                <a href="catalog.html" class="button">
+                    ENTER ARCHIVE
+                </a>
+            </div>
+        </section>
+    </main>
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo">
+                    YVES
+                </span>
+                <p>
+                    AN UNOFFICIAL STUDENT PROJECT.
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/yvesntual/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    INSTAGRAM
+                </a>
+                <a href="https://github.com/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    GITHUB
+                </a>
+                <a href="catalog.html">
+                    CATALOG
+                </a>
+            </div>
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 YVES ARCHIVE
+                </p>
+
+                <p>
+                    MADE FOR RS SCHOOL
+                </p>
+
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>  
