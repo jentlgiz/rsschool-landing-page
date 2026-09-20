@@ -603,55 +603,6 @@ p {
     opacity: 0.6;
 }
 
-/* .music-card {
-    position: relative;
-
-    background: var(--surface);
-
-    border: 1px solid var(--border);
-
-    overflow: hidden;
-
-    transition:
-        transform var(--transition),
-        border-color var(--transition),
-        background-color var(--transition);
-}
-
-
-.music-card:hover {
-    transform: translateY(-8px);
-
-    border-color: rgba(185, 167, 217, 0.4);
-}
-
-
-.music-image {
-    position: relative;
-
-    aspect-ratio: 4 / 5;
-
-    overflow: hidden;
-
-    background: var(--surface-2);
-}
-
-
-.music-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 700ms ease;
-}
-
-
-.music-card:hover .music-image img {
-    transform: scale(1.04);
-} */
-
-
 .music-info {
     padding: 1.5rem;
 }
@@ -718,6 +669,11 @@ p {
     aspect-ratio: 4 / 5;
 
     background: var(--surface);
+    width: 560px;
+    height: 580px;
+    border: 3px solid black;
+    object-fit: cover;
+    border-radius: 60% 40% 55% 45%;
 }
 
 
