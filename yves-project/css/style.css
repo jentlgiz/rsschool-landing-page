@@ -502,8 +502,108 @@ p {
     gap: 1.5rem;
 }
 
+.music-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: var(--surface-2);
+}
 
-.music-card {
+.music-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        saturate(0.45)
+        contrast(0.92)
+        brightness(0.78);
+
+    transition:
+        transform 700ms ease,
+        filter 700ms ease;
+}
+
+
+/* Atmospheric colour */
+.music-image::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 25%,
+            rgba(185, 167, 217, 0.28),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(185, 220, 232, 0.18),
+            transparent 50%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(30, 25, 50, 0.25),
+            rgba(5, 7, 15, 0.60)
+        );
+
+    mix-blend-mode: multiply;
+
+    opacity: 1;
+
+    pointer-events: none;
+
+    transition: opacity 500ms ease;
+}
+
+
+/* Dark cinematic fade */
+.music-image::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(5, 5, 10, 0.05),
+            rgba(5, 5, 10, 0.45)
+        );
+
+    opacity: 1;
+
+    pointer-events: none;
+
+    transition: opacity 500ms ease;
+}
+
+
+/* HOVER */
+
+.music-card:hover .music-image img {
+    transform: scale(1.04);
+
+    filter:
+        saturate(0.65)
+        contrast(0.98)
+        brightness(1.05);
+}
+
+.music-card:hover .music-image::after {
+    opacity: 0.65;
+}
+
+.music-card:hover .music-image::before {
+    opacity: 0.6;
+}
+
+/* .music-card {
     position: relative;
 
     background: var(--surface);
@@ -549,7 +649,7 @@ p {
 
 .music-card:hover .music-image img {
     transform: scale(1.04);
-}
+} */
 
 
 .music-info {
