@@ -19,6 +19,10 @@
 
     --border: rgba(255, 255, 255, 0.12);
 
+    --image-overlay: rgba(5, 5, 10, 0.60);
+    --image-overlay-soft: rgba(5, 5, 10, 0.05);
+    --image-tint: rgba(30, 25, 50, 0.25);
+
     /* Effects */
     --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
     --blur: blur(20px);
@@ -52,6 +56,10 @@
     --border: rgba(20, 20, 25, 0.13);
 
     --shadow: 0 20px 60px rgba(40, 35, 45, 0.1);
+
+    --image-overlay: rgba(255, 255, 255, 0.20);
+    --image-overlay-soft: rgba(255, 255, 255, 0.02);
+    --image-tint: rgba(185, 167, 217, 0.12);
 }
 
 
@@ -534,21 +542,21 @@ p {
     inset: 0;
 
     background:
-        radial-gradient(
-            circle at 20% 25%,
-            rgba(185, 167, 217, 0.28),
-            transparent 45%
-        ),
-        radial-gradient(
-            circle at 80% 75%,
-            rgba(185, 220, 232, 0.18),
-            transparent 50%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(30, 25, 50, 0.25),
-            rgba(5, 7, 15, 0.60)
-        );
+    radial-gradient(
+        circle at 20% 25%,
+        rgba(185, 167, 217, 0.28),
+        transparent 45%
+    ),
+    radial-gradient(
+        circle at 80% 75%,
+        rgba(185, 220, 232, 0.18),
+        transparent 50%
+    ),
+    linear-gradient(
+        135deg,
+        var(--image-tint),
+        var(--image-overlay)
+    );
 
     mix-blend-mode: multiply;
 
@@ -570,11 +578,11 @@ p {
     z-index: 1;
 
     background:
-        linear-gradient(
-            to bottom,
-            rgba(5, 5, 10, 0.05),
-            rgba(5, 5, 10, 0.45)
-        );
+    linear-gradient(
+        to bottom,
+        var(--image-overlay-soft),
+        var(--image-overlay)
+    );
 
     opacity: 1;
 
@@ -671,7 +679,7 @@ p {
     background: var(--surface);
     width: 560px;
     height: 580px;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     object-fit: cover;
     border-radius: 60% 40% 55% 45%;
 }
@@ -683,9 +691,16 @@ p {
 
     object-fit: cover;
 
-    transition: transform 800ms ease;
+    opacity: 1;
+
+    transition:
+        transform 800ms ease,
+        opacity 300ms ease;
 }
 
+.artist-image img.is-changing {
+    opacity: 0;
+}
 
 .artist-image:hover img {
     transform: scale(1.03);
