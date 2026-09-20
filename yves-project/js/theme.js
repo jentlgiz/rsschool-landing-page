@@ -31,15 +31,24 @@ function changePortrait(src, animate = true) {
 /* ================= THEME ================= */
 
 function applyTheme(theme, animate = true) {
+
     if (theme === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
+
+        document.documentElement.setAttribute(
+            "data-theme",
+            "light"
+        );
 
         changePortrait(
             "./assets/images/yves-portfolio-light.webp",
             animate
         );
+
     } else {
-        document.documentElement.removeAttribute("data-theme");
+
+        document.documentElement.removeAttribute(
+            "data-theme"
+        );
 
         changePortrait(
             "./assets/images/yves-portfolio.jpg",
@@ -62,19 +71,30 @@ applyTheme(
 /* ================= THEME TOGGLE ================= */
 
 if (themeToggle) {
+
     themeToggle.addEventListener("click", () => {
+
         const currentTheme =
-            document.documentElement.getAttribute("data-theme") === "light"
+            document.documentElement.getAttribute(
+                "data-theme"
+            ) === "light"
                 ? "light"
                 : "dark";
+
 
         const newTheme =
             currentTheme === "light"
                 ? "dark"
                 : "light";
 
+
         applyTheme(newTheme, true);
 
-        localStorage.setItem(THEME_KEY, newTheme);
+        localStorage.setItem(
+            THEME_KEY,
+            newTheme
+        );
+
     });
+
 }
