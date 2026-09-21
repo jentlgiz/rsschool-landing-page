@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YVES — CATALOG</title>
+    <meta
+        name="description"
+        content="A visual archive and artist landing page dedicated to Yves."
+    >
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <!-- Logo -->
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Yves home"
+            >
+                YVES
+            </a>
+
+
+            <!-- Main navigation -->
+
+            <nav
+                class="main-nav"
+                aria-label="Main navigation"
+            >
+
+                <ul>
+
+                    <li>
+                        <a href="index.html#artist">
+                            Artist
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#music">
+                            Music
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="index.html#archive">
+                            Archive
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="catalog.html"
+                            aria-current="page"
+                        >
+                            Catalog
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- Header controls -->
+
+            <div class="header-controls">
+
+                <button
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="Toggle light and dark theme"
+                >
+                    ◐
+                </button>
+
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <!-- ================= CATALOG HERO ================= -->
+
+        <section class="catalog-hero section">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    ARCHIVE / 2026
+                </p>
+
+                <h1>
+                    CATALOG
+                </h1>
+
+            </div>
+
+            <div class="catalog-intro">
+
+                <p>
+                    A collection of releases, merch and
+                    collaborations documenting Yves' work across
+                    different chapters of her career.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CATALOG ================= -->
+
+        <section
+            class="catalog-section section"
+            id="catalog"
+        >
+
+
+            <!-- ================= CATEGORY FILTER ================= -->
+
+            <nav
+                class="catalog-filter"
+                aria-label="Catalog categories"
+            >
+
+                <!-- ALL -->
+
+                <button
+                    class="filter-button is-active"
+                    type="button"
+                    data-filter="all"
+                    aria-pressed="true"
+                >
+                    All
+                </button>
+
+
+                <!-- ALBUMS -->
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="album"
+                    aria-pressed="false"
+                >
+                    Albums
+                </button>
+
+
+                <!-- MERCH -->
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="merch"
+                    aria-pressed="false"
+                >
+                    Merch
+                </button>
+
+
+                <!-- COLLABORATIONS -->
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="collaboration"
+                    aria-pressed="false"
+                >
+                    Collaborations
+                </button>
+
+            </nav>
+
+
+            <!-- ================= CATALOG GRID ================= -->
+
+            <div
+                class="catalog-grid"
+                id="catalog-grid"
+            >
+
+
+                <!-- ================================================= -->
+                <!-- ALBUM 01 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="album"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/yves-album-1.webp"
+                            alt="Yves LOOP album artwork"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            01
+                        </span>
+
+                        <h2>
+                            LOOP
+                        </h2>
+
+                        <p>
+                            Yves' first solo single, introducing
+                            her independent musical direction.
+                        </p>
+
+                        <span class="catalog-meta">
+                            SINGLE · 2024
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- ALBUM 02 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="album"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/yves-album-2.webp"
+                            alt="Yves I DID album artwork"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            02
+                        </span>
+
+                        <h2>
+                            I DID
+                        </h2>
+
+                        <p>
+                            A five-track EP exploring a more personal
+                            and atmospheric side of Yves.
+                        </p>
+
+                        <span class="catalog-meta">
+                            EP · 2024
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- ALBUM 03 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="album"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/yves-album-3.jpg"
+                            alt="Yves Soft Error album artwork"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            03
+                        </span>
+
+                        <h2>
+                            SOFT ERROR
+                        </h2>
+
+                        <p>
+                            An experimental entry within the Yves
+                            catalogue.
+                        </p>
+
+                        <span class="catalog-meta">
+                            RELEASE · 2024
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- MERCH 01 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="merch"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-1.avif"
+                            alt="Yves merchandise collaboration"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            01
+                        </span>
+
+                        <h2>
+                            YVES TEE
+                        </h2>
+
+                        <p>
+                            Limited edition graphic T-shirt inspired
+                            by Yves' visual identity.
+                        </p>
+
+                        <span class="catalog-meta">
+                            MERCH · 2024
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- MERCH 02 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="merch"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-2.avif"
+                            alt="Yves merchandise item"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            02
+                        </span>
+
+                        <h2>
+                            ARCHIVE HOODIE
+                        </h2>
+
+                        <p>
+                            Oversized hoodie featuring artwork from
+                            the Yves archive.
+                        </p>
+
+                        <span class="catalog-meta">
+                            MERCH · 2024
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- MERCH 03 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="merch"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-3.avif"
+                            alt="Yves merchandise item"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            03
+                        </span>
+
+                        <h2>
+                            LOGO CAP
+                        </h2>
+
+                        <p>
+                            Minimal embroidered cap created for the
+                            Yves catalogue collection.
+                        </p>
+
+                        <span class="catalog-meta">
+                            MERCH · 2025
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- MERCH 04 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="merch"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-4.avif"
+                            alt="Yves merchandise item"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            04
+                        </span>
+
+                        <h2>
+                            ARCHIVE SHIRT
+                        </h2>
+
+                        <p>
+                            Graphic shirt inspired by photographs from
+                            Yves' archive.
+                        </p>
+
+                        <span class="catalog-meta">
+                            MERCH · 2025
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- MERCH 05 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="merch"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-5.avif"
+                            alt="Yves merchandise item"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            05
+                        </span>
+
+                        <h2>
+                            TOUR HOODIE
+                        </h2>
+
+                        <p>
+                            Tour-inspired hoodie created as part of
+                            the Yves merchandise archive.
+                        </p>
+
+                        <span class="catalog-meta">
+                            MERCH · 2025
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- MERCH 06 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="merch"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-1.avif"
+                            alt="Yves merchandise item"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            06
+                        </span>
+
+                        <h2>
+                            PHOTO TEE
+                        </h2>
+
+                        <p>
+                            Limited graphic T-shirt featuring imagery
+                            from the Yves visual archive.
+                        </p>
+
+                        <span class="catalog-meta">
+                            MERCH · 2025
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- MERCH 07 — initially hidden -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card catalog-card--extra"
+                    data-category="merch"
+                    hidden
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-2.avif"
+                            alt="Yves merchandise item"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            07
+                        </span>
+
+                        <h2>
+                            STUDIO SWEAT
+                        </h2>
+
+                        <p>
+                            Studio-inspired sweatshirt from the
+                            extended merchandise collection.
+                        </p>
+
+                        <span class="catalog-meta">
+                            MERCH · 2025
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- MERCH 08 — initially hidden -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card catalog-card--extra"
+                    data-category="merch"
+                    hidden
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-3.avif"
+                            alt="Yves merchandise item"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            08
+                        </span>
+
+                        <h2>
+                            ARCHIVE BAG
+                        </h2>
+
+                        <p>
+                            Everyday bag featuring a minimal Yves
+                            archive graphic.
+                        </p>
+
+                        <span class="catalog-meta">
+                            MERCH · 2026
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- COLLABORATION 01 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="collaboration"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-4.avif"
+                            alt="Yves collaboration"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            01
+                        </span>
+
+                        <h2>
+                            COLLAB TITLE
+                        </h2>
+
+                        <p>
+                            Collaborative work from Yves' archive
+                            developed with an external creative team.
+                        </p>
+
+                        <span class="catalog-meta">
+                            COLLABORATION · 2025
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ================================================= -->
+                <!-- COLLABORATION 02 -->
+                <!-- ================================================= -->
+
+                <article
+                    class="catalog-card"
+                    data-category="collaboration"
+                >
+
+                    <div class="catalog-image">
+
+                        <img
+                            src="./assets/images/merch-5.avif"
+                            alt="Yves collaboration"
+                        >
+
+                    </div>
+
+                    <div class="catalog-info">
+
+                        <span class="card-number">
+                            02
+                        </span>
+
+                        <h2>
+                            CREATIVE PROJECT
+                        </h2>
+
+                        <p>
+                            A collaborative visual project documenting
+                            another chapter of the Yves archive.
+                        </p>
+
+                        <span class="catalog-meta">
+                            COLLABORATION · 2026
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- ================= SHOW MORE ================= -->
+
+            <div class="catalog-actions">
+
+                <button
+                    class="show-more-button"
+                    type="button"
+                    id="show-more"
+                    aria-expanded="false"
+                >
+                    SHOW MORE
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+
+                <span class="logo">
+                    YVES
+                </span>
+
+                <p>
+                    AN UNOFFICIAL STUDENT PROJECT.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a
+                    href="https://www.instagram.com/yvesntual/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    INSTAGRAM
+                </a>
+
+                <a
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GITHUB
+                </a>
+
+                <a href="index.html">
+                    HOME
+                </a>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 YVES ARCHIVE
+                </p>
+
+                <p>
+                    MADE FOR RS SCHOOL
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="./js/theme.js"></script>
+    <script src="./js/catalog.js"></script>
+
+</body>
+
+</html>
+
