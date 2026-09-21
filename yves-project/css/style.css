@@ -485,7 +485,7 @@ p {
 
 .section {
     padding-top: 10rem;
-    padding-bottom: 10rem;
+    padding-bottom: 2rem;
 }
 
 
@@ -983,7 +983,9 @@ p {
 
 /* ================= CATALOG HERO ================= */
 
-.catalog-hero {
+/* .catalog-hero {
+    position: relative;
+
     min-height: 65vh;
 
     display: flex;
@@ -991,8 +993,39 @@ p {
     justify-content: flex-end;
 
     background:
-        url("../assets/images/yves-catalog-section-3.webp")
+        url("../assets/images/Yves-catalog.jpg")
         center / cover no-repeat;
+    overflow: hidden;
+}
+
+[data-theme="light"] .catalog-hero {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url("https://jentlgiz.github.io/rsschool-landing-page/yves-project/assets/images/yves-6.jpg");
+} */
+
+/* ================= LIGHT MODE OVERLAY ================= */
+
+/* [data-theme="light"] .catalog-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35, 55, 65, 0.28),
+            rgba(20, 35, 45, 0.18)
+        );
+
+    pointer-events: none;
+} */
+
+
+/* Keep hero content above the overlay */
+
+.catalog-hero > * {
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -1009,6 +1042,14 @@ p {
     letter-spacing: -0.045em;
 }
 
+/* ================= LIGHT MODE TITLE ================= */
+
+[data-theme="light"] .catalog-hero h1 {
+    color: #9a3a3b; 
+}
+
+
+/* ================= INTRO ================= */
 
 .catalog-intro {
     display: flex;
@@ -1028,6 +1069,13 @@ p {
     font-size: 1rem;
     line-height: 1.8;
 }
+
+
+/* ================= LIGHT MODE INTRO ================= */
+
+/* [data-theme="light"] .catalog-intro p {
+    color: rgba(255, 255, 255, 0.92);
+} */
 
 
 /* =========================================================
@@ -1050,9 +1098,9 @@ p {
 
     background: var(--bg);
 
-    transition:
+    /* transition:
         background-color var(--transition),
-        border-color var(--transition);
+        border-color var(--transition); */
 }
 
 
