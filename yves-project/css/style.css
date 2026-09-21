@@ -320,6 +320,15 @@ p {
     padding-top: var(--header-height);
 
     overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(/yves-project/assets/images/yves-6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 40% 50%;
+    transition: background-image 0.3s ease; 
+}
+
+[data-theme="light"] .hero {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(/yves-project/assets/images/yves-6.jpg);
 }
 
 
@@ -354,8 +363,12 @@ p {
     letter-spacing: -0.045em;
 
     color: var(--text);
+    transition: color 0.3s ease; 
 }
 
+[data-theme="light"] .hero-title {
+    color: #9a3a3b; 
+}
 
 .hero-meta {
     display: flex;
@@ -668,6 +681,8 @@ p {
     gap: 6rem;
 
     align-items: center;
+    justify-items: center;
+    align-content: center;
 }
 
 
@@ -675,13 +690,11 @@ p {
     overflow: hidden;
 
     aspect-ratio: 4 / 5;
+    width: 480px;
 
     background: var(--surface);
-    width: 560px;
-    height: 580px;
-    /* border: 3px solid black; */
     object-fit: cover;
-    border-radius: 60% 40% 55% 45%;
+    border-radius: 5%;
 }
 
 
@@ -1303,24 +1316,25 @@ p {
         width: min(100% - 48px, var(--container));
     }
 
-
     .main-nav ul {
         gap: 1.5rem;
     }
-
 
     .music-slider {
         grid-template-columns: repeat(2, 1fr);
     }
 
-
     .music-card:last-child {
         display: none;
     }
 
-
     .artist-content {
         gap: 3rem;
+    }
+
+    .artist-image {
+        width: 360px;
+        border-radius: 60% 40% 55% 45%;
     }
 
 }
@@ -1382,6 +1396,12 @@ p {
         top: 58%;
     }
 
+    /* .yves-hero-image {
+        opacity: 1;
+        z-index: 1;
+
+    } */
+
 
     /* Sections */
 
@@ -1427,7 +1447,9 @@ p {
 
 
     .artist-image {
+        width: 290px;
         aspect-ratio: 1 / 1;
+        border-radius: 60% 40% 55% 45%;
     }
 
 
@@ -1503,6 +1525,10 @@ p {
 
     .music-info h3 {
         font-size: 2.2rem;
+    }
+
+    .artist-image {
+        width: 210px;
     }
 
 
