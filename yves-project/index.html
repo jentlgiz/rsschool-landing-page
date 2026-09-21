@@ -89,94 +89,64 @@
             <!-- Decorative circle -->
             <div class="hero-orbit" aria-hidden="true">
                 <span></span>
-                <!-- <img
-                src="./assets/images/yves-6.jpg" 
-                alt="Yves image"
-                class="yves-hero-image"
-                > -->
             </div>
         </section>
-        <!-- ================= MUSIC ================= -->
-        <section class="music section" id="music">
-            <div class="section-heading">
-                <p class="eyebrow">
-                    01 / SELECTED WORKS
-                </p>
+<!-- ================= MUSIC ================= -->
+<section class="music section" id="music">
+    <div class="section-heading">
+        <p class="eyebrow">01 / SELECTED WORKS</p>
+        <h2>MUSIC</h2>
+    </div>
 
-                <h2>
-                    MUSIC
-                </h2>
-            </div>
-            <!-- Featured music -->
-            <div class="music-slider">
-                <article class="music-card">
-                    <div class="music-image">
-                        <img
-                            src="./assets/images/yves-album-1.webp"
-                            alt="Yves LOOP"
-                        >
-                    </div>
-                    <div class="music-info">
-                        <p class="card-number">
-                            01
-                        </p>
-                        <h3>
-                            LOOP
-                        </h3>
-                        <p>
-                            A hypnotic introduction to Yves' solo direction.
-                        </p>
-                        <span>
-                            SINGLE · 2024
-                        </span>
-                    </div>
-                </article>
-                <article class="music-card">
-                    <div class="music-image">
-                        <img
-                            src="./assets/images/yves-album-2.webp"
-                            alt="Yves I DID"
-                        >
-                    </div>
-                    <div class="music-info">
-                        <p class="card-number">
-                            02
-                        </p>
-                        <h3>
-                            I DID
-                        </h3>
-                        <p>
-                            A playful and atmospheric chapter in the archive.
-                        </p>
-                        <span>
-                            EP · 2024
-                        </span>
-                    </div>
-                </article>
-                <article class="music-card">
-                    <div class="music-image">
-                        <img
-                            src="./assets/images/yves-album-3.jpg"
-                            alt="Yves Soft Error"
-                        >
-                    </div>
-                    <div class="music-info">
-                        <p class="card-number">
-                            03
-                        </p>
-                        <h3>
-                            SOFT ERROR
-                        </h3>
-                        <p>
-                            An experimental entry within the Yves catalogue.
-                        </p>
-                        <span>
-                            RELEASE
-                        </span>
-                    </div>
-                </article>
-            </div>
-        </section>
+    <!-- Slider Wrapper with Overlay Controls -->
+    <div class="slider-wrapper">
+        <div class="music-slider" id="musicSlider">
+            <article class="music-card">
+                <div class="music-image">
+                    <img src="./assets/images/yves-album-1.webp" alt="Yves LOOP">
+                </div>
+                <div class="music-info">
+                    <!-- Subtle Animated Arrow Indicator -->
+                    <div class="active-arrow" aria-hidden="true">↓</div>
+                    <p class="card-number">01</p>
+                    <h3>LOOP</h3>
+                    <p>A hypnotic introduction to Yves' solo direction.</p>
+                    <span>SINGLE · 2024</span>
+                </div>
+            </article>
+
+            <article class="music-card">
+                <div class="music-image">
+                    <img src="./assets/images/yves-album-2.webp" alt="Yves I DID">
+                </div>
+                <div class="music-info">
+                    <div class="active-arrow" aria-hidden="true">↓</div>
+                    <p class="card-number">02</p>
+                    <h3>I DID</h3>
+                    <p>A playful and atmospheric chapter in the archive.</p>
+                    <span>EP · 2024</span>
+                </div>
+            </article>
+
+            <article class="music-card">
+                <div class="music-image">
+                    <img src="./assets/images/yves-album-3.jpg" alt="Yves Soft Error">
+                </div>
+                <div class="music-info">
+                    <div class="active-arrow" aria-hidden="true">↓</div>
+                    <p class="card-number">03</p>
+                    <h3>SOFT ERROR</h3>
+                    <p>An experimental entry within the Yves catalogue.</p>
+                    <span>RELEASE</span>
+                </div>
+            </article>
+        </div>
+
+        <!-- Floating Navigation Controls -->
+        <button class="slider-btn prev" type="button" aria-label="Previous slide" onclick="document.getElementById('musicSlider').scrollBy({left: -320, behavior: 'smooth'})">←</button>
+        <button class="slider-btn next" type="button" aria-label="Next slide" onclick="document.getElementById('musicSlider').scrollBy({left: 320, behavior: 'smooth'})">→</button>
+    </div>
+</section>
         <!-- ================= ARTIST ================= -->
         <section class="artist section" id="artist">
             <div class="section-heading">
