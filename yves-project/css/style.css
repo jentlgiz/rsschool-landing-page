@@ -715,6 +715,7 @@ p {
 
 .music-card:hover .music-image img {
     transform: scale(1.04);
+    cursor: pointer;
 
     filter:
         saturate(0.65)
@@ -1257,6 +1258,7 @@ p {
 
 .catalog-card {
     min-width: 0;
+    cursor: pointer;
 
     overflow: hidden;
 
