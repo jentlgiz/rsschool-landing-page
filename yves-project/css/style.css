@@ -309,7 +309,7 @@ p {
    HERO
    ========================================================= */
 
-.hero {
+/* .hero {
     position: relative;
 
     min-height: 100vh;
@@ -320,15 +320,30 @@ p {
     padding-top: var(--header-height);
 
     overflow: hidden;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url("/yves-project/assets/images/yves-6.jpg");
+    background-image: url("https://jentlgiz.github.io/rsschool-landing-page/yves-project/assets/images/yves-6.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url("/rsschool-landing-page/yves-project/assets/images/yves-6.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 40% 50%;
     transition: background-image 0.3s ease; 
+} */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--header-height);
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+        url("https://jentlgiz.github.io/rsschool-landing-page/yves-project/assets/images/yves-6.jpg")
+        center / cover no-repeat;
 }
 
+
 [data-theme="light"] .hero {
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url("/yves-project/assets/images/yves-6.jpg");
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url("https://jentlgiz.github.io/rsschool-landing-page/yves-project/assets/images/yves-6.jpg");
 }
 
 
