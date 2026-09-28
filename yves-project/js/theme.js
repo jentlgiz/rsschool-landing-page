@@ -165,3 +165,58 @@ if (menuToggle && mainNav) {
         }
     });
 }
+
+/* ================= CATALOG FILTER ================= */
+
+const filterButtons = document.querySelectorAll(".filter-button");
+const catalogCards = document.querySelectorAll(".catalog-card");
+
+if (filterButtons.length && catalogCards.length) {
+
+    function filterCatalog(category) {
+
+        filterButtons.forEach((button) => {
+            const isActive =
+                button.dataset.filter === category;
+
+            button.classList.toggle(
+                "is-active",
+                isActive
+            );
+        });
+
+
+        catalogCards.forEach((card) => {
+
+            const cardCategory =
+                card.dataset.category;
+
+            const shouldShow =
+                category === "all" ||
+                cardCategory === category;
+
+            card.hidden = !shouldShow;
+
+        });
+    }
+
+
+    filterButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const category =
+                button.dataset.filter;
+
+            filterCatalog(category);
+
+        });
+
+    });
+
+
+    /* ================= INITIAL STATE ================= */
+
+    filterCatalog("all");
+
+}
