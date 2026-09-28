@@ -782,8 +782,156 @@
         </section>
 
     </main>
+<!-- ================= CATALOG MODAL ================= -->
+    <div
+    class="catalog-modal"
+    id="catalog-modal"
+    aria-hidden="true"
+>
+    <div
+        class="catalog-modal__overlay"
+        data-modal-close
+    ></div>
+
+    <div
+        class="catalog-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+    >
+        <button
+            class="catalog-modal__close"
+            type="button"
+            aria-label="Close modal"
+            data-modal-close
+        >
+            ×
+        </button>
+
+        <div class="catalog-modal__image">
+            <img
+                id="modal-image"
+                src=""
+                alt=""
+            >
+        </div>
+
+        <div class="catalog-modal__content">
+
+            <span
+                class="catalog-modal__category"
+                id="modal-category"
+            ></span>
+
+            <h2
+                class="catalog-modal__title"
+                id="modal-title"
+            ></h2>
+
+            <p
+                class="catalog-modal__description"
+                id="modal-description"
+            ></p>
+
+            <!-- PARAMETER 01 -->
+
+            <div class="modal-option-group">
+
+                <span class="modal-option-group__label">
+                    FORMAT
+                </span>
+
+                <div
+                    class="modal-options"
+                    id="modal-format-options"
+                >
+                    <button
+                        type="button"
+                        class="modal-option is-selected"
+                        data-format="STANDARD"
+                    >
+                        STANDARD
+                    </button>
+
+                    <button
+                        type="button"
+                        class="modal-option"
+                        data-format="LIMITED"
+                    >
+                        LIMITED
+                    </button>
+
+                    <button
+                        type="button"
+                        class="modal-option"
+                        data-format="ARCHIVE"
+                    >
+                        ARCHIVE
+                    </button>
+                </div>
+
+            </div>
 
 
+            <!-- PARAMETER 02 -->
+
+            <div class="modal-option-group">
+
+                <span class="modal-option-group__label">
+                    EDITION
+                </span>
+
+                <div
+                    class="modal-options"
+                    id="modal-edition-options"
+                >
+                    <button
+                        type="button"
+                        class="modal-option is-selected"
+                        data-edition="DIGITAL"
+                    >
+                        DIGITAL
+                    </button>
+
+                    <button
+                        type="button"
+                        class="modal-option"
+                        data-edition="PHYSICAL"
+                    >
+                        PHYSICAL
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- CURRENT SELECTION -->
+
+            <div class="modal-selection">
+
+                <span class="modal-selection__label">
+                    CURRENT SELECTION
+                </span>
+
+                <strong
+                    class="modal-selection__value"
+                    id="modal-selection-value"
+                >
+                    STANDARD / DIGITAL
+                </strong>
+
+                <span
+                    class="modal-selection__meta"
+                    id="modal-selection-meta"
+                >
+                    2024 · AVAILABLE
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+</div>
     <!-- ================= FOOTER ================= -->
 
     <footer class="site-footer">

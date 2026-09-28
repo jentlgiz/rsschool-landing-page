@@ -2556,3 +2556,538 @@ body.menu-open {
         overflow: auto;
     }
 }
+
+/* =========================================================
+   CATALOG PAGINATION
+   ========================================================= */
+
+.catalog-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    margin-top: 1.5rem;
+}
+
+.catalog-pagination[hidden] {
+    display: none;
+}
+
+.catalog-page {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 42px;
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    background: transparent;
+    color: var(--text-muted);
+
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.catalog-page:hover {
+    color: var(--text);
+    border-color: var(--text);
+}
+
+.catalog-page.is-active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.catalog-page:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   CARD PAGINATION TRANSITION
+   ========================================================= */
+
+.catalog-card {
+    opacity: 1;
+    transform: translateY(0);
+
+    transition:
+        opacity 300ms ease,
+        transform 300ms ease;
+}
+
+.catalog-card.is-visible {
+    animation: catalogCardIn 350ms ease both;
+}
+
+@keyframes catalogCardIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =========================================================
+   MOBILE PAGINATION
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .catalog-pagination {
+        gap: 0.35rem;
+        flex-wrap: wrap;
+    }
+
+    .catalog-page {
+        width: 38px;
+        height: 38px;
+    }
+
+}
+
+/* =========================================================
+   CATALOG MODAL
+   ========================================================= */
+
+.catalog-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2rem;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 300ms ease,
+        visibility 300ms ease;
+}
+
+.catalog-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+   ========================================================= */
+
+.catalog-modal__overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   MODAL DIALOG
+   ========================================================= */
+
+.catalog-modal__dialog {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+    grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+
+    width: min(100%, 980px);
+    max-height: calc(100vh - 4rem);
+
+    overflow: hidden;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow);
+
+    transform: translateY(20px) scale(0.98);
+
+    transition:
+        transform 350ms ease,
+        background-color var(--transition);
+}
+
+.catalog-modal.is-open .catalog-modal__dialog {
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.catalog-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    z-index: 5;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+    color: var(--text);
+
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 300;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        transform var(--transition);
+}
+
+.catalog-modal__close:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+
+    transform: rotate(90deg);
+}
+
+.catalog-modal__close:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   MODAL IMAGE
+   ========================================================= */
+
+.catalog-modal__image {
+    min-height: 520px;
+
+    overflow: hidden;
+
+    background: var(--surface-2);
+}
+
+.catalog-modal__image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        opacity 300ms ease,
+        transform 500ms ease;
+}
+
+.catalog-modal__image img.is-changing {
+    opacity: 0;
+}
+
+
+/* =========================================================
+   MODAL CONTENT
+   ========================================================= */
+
+.catalog-modal__content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: clamp(2rem, 5vw, 4rem);
+}
+
+.catalog-modal__category {
+    margin-bottom: 1rem;
+
+    color: var(--accent);
+
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.catalog-modal__title {
+    margin: 0 0 1rem;
+
+    color: var(--text);
+
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.catalog-modal__description {
+    max-width: 500px;
+
+    margin: 0 0 2.5rem;
+
+    color: var(--text-muted);
+
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   OPTIONS
+   ========================================================= */
+
+.modal-option-group {
+    margin-bottom: 1.5rem;
+}
+
+.modal-option-group__label {
+    display: block;
+
+    margin-bottom: 0.7rem;
+
+    color: var(--text-muted);
+
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.modal-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.modal-option {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding: 0.7rem 0.9rem;
+
+    border: 1px solid var(--border);
+
+    background: transparent;
+    color: var(--text-muted);
+
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+.modal-option:hover {
+    color: var(--text);
+    border-color: var(--text);
+}
+
+.modal-option.is-selected {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.modal-option:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   CURRENT SELECTION
+   ========================================================= */
+
+.modal-selection {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.4rem;
+
+    margin-top: 0.75rem;
+    padding-top: 1.5rem;
+
+    border-top: 1px solid var(--border);
+}
+
+.modal-selection__label {
+    color: var(--text-muted);
+
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+}
+
+.modal-selection__value {
+    color: var(--text);
+
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.modal-selection__meta {
+    color: var(--text-muted);
+
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .catalog-modal {
+        padding: 1.5rem;
+    }
+
+    .catalog-modal__dialog {
+        grid-template-columns: minmax(240px, 0.8fr) minmax(300px, 1.2fr);
+
+        max-height: calc(100vh - 3rem);
+    }
+
+    .catalog-modal__image {
+        min-height: 480px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .catalog-modal {
+        align-items: flex-start;
+
+        padding: 0.75rem;
+    }
+
+    .catalog-modal__dialog {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        max-height: calc(100vh - 1.5rem);
+
+        overflow-y: auto;
+    }
+
+    .catalog-modal__image {
+        min-height: 300px;
+        height: 42vh;
+
+        flex-shrink: 0;
+    }
+
+    .catalog-modal__content {
+        padding: 1.75rem 1.25rem 2rem;
+    }
+
+    .catalog-modal__title {
+        font-size: clamp(2.5rem, 13vw, 4rem);
+    }
+
+    .catalog-modal__description {
+        margin-bottom: 1.75rem;
+    }
+
+    .catalog-modal__close {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .catalog-modal {
+        padding: 0.5rem;
+    }
+
+    .catalog-modal__dialog {
+        max-height: calc(100vh - 1rem);
+    }
+
+    .catalog-modal__image {
+        height: 34vh;
+        min-height: 230px;
+    }
+
+    .catalog-modal__content {
+        padding: 1.5rem 1rem 1.75rem;
+    }
+
+    .modal-option {
+        padding: 0.65rem 0.75rem;
+    }
+
+}
