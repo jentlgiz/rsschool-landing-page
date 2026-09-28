@@ -203,6 +203,35 @@ p {
 
 /* ================= NAVIGATION ================= */
 
+.main-nav {
+  /* Positioning: lock to the viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  z-index: 9999;
+  
+  /* Background & Layout */
+  background-color: var(--bg-color, #ffffff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Off-screen position: pushed up out of view */
+  transform: translateY(-100%);
+  
+  /* Smooth sliding transition */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slide down into view when open */
+.main-nav.is-open {
+  transform: translateY(0);
+}
+
 .main-nav ul {
     display: flex;
     align-items: center;

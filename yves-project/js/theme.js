@@ -34,7 +34,6 @@ function changePortrait(src, animate = true) {
     setTimeout(() => {
         artistPortrait.src = src;
 
-        // Reset state once image finishes loading or if cached
         const handleImageLoad = () => {
             artistPortrait.classList.remove("is-changing");
             artistPortrait.removeEventListener("load", handleImageLoad);
@@ -105,25 +104,44 @@ function openMenu() {
     document.body.style.width = "100%";
 }
 
-function closeMenu() {
-    if (!menuToggle || !mainNav || !menuIsOpen) return;
-
-    menuIsOpen = false;
-
-    mainNav.classList.remove("is-open");
-    menuToggle.classList.remove("is-open");
-
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute("aria-label", "Open navigation menu");
-
+function unlockBody() {
     document.body.classList.remove("menu-open");
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.left = "";
     document.body.style.right = "";
     document.body.style.width = "";
+}
 
-    window.scrollTo(0, savedScrollPosition);
+function closeMenu(targetElement = null) {
+    if (!menuToggle || !mainNav || !menuIsOpen) return;
+
+    menuIsOpen = false;
+
+    // 1. Trigger slide-up animation
+    mainNav.classList.remove("is-open");
+    menuToggle.classList.remove("is-open");
+
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
+
+    // 2. Handle scroll unlocking & section navigation
+    if (targetElement) {
+        // Unlock body position immediately so page can scroll to section
+        unlockBody();
+        window.scrollTo(0, savedScrollPosition);
+
+        // Scroll smoothly to target after menu starts sliding up
+        setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+    } else {
+        // Closed without clicking a section link (e.g. toggle button or Escape key)
+        setTimeout(() => {
+            unlockBody();
+            window.scrollTo(0, savedScrollPosition);
+        }, 400);
+    }
 }
 
 function initMobileMenu() {
@@ -138,7 +156,19 @@ function initMobileMenu() {
     });
 
     mainNavLinks.forEach((link) => {
-        link.addEventListener("click", () => {
+        link.addEventListener("click", (event) => {
+            const href = link.getAttribute("href");
+
+            // Check if link points to an anchor section on the current page
+            if (href && href.startsWith("#")) {
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    event.preventDefault(); // Prevent instant jump
+                    closeMenu(targetElement);
+                    return;
+                }
+            }
+
             closeMenu();
         });
     });
