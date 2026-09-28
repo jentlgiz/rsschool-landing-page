@@ -16,6 +16,8 @@ const DARK_PORTRAIT_SRC = "./assets/images/yves-portfolio.jpg";
 
 let savedScrollPosition = 0;
 let menuIsOpen = false;
+let isClosing = false;
+let closeTimer = null;
 
 /* =========================================================
    PORTRAIT & THEME MANAGEMENT
@@ -84,10 +86,34 @@ function initTheme() {
    MOBILE MENU NAVIGATION
    ========================================================= */
 
-function openMenu() {
-    if (!menuToggle || !mainNav || menuIsOpen) return;
+function unlockBody() {
+    document.body.classList.remove("menu-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+}
 
-    savedScrollPosition = window.scrollY;
+function clearPendingClose() {
+    if (closeTimer !== null) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+    }
+    isClosing = false;
+    if (mainNav) mainNav.classList.remove("is-closing");
+}
+
+function openMenu() {
+    if (!menuToggle || !mainNav) return;
+
+    // Reset any close animation timer currently running
+    clearPendingClose();
+
+    if (!menuIsOpen) {
+        savedScrollPosition = window.scrollY;
+    }
+
     menuIsOpen = true;
 
     mainNav.classList.add("is-open");
@@ -104,42 +130,38 @@ function openMenu() {
     document.body.style.width = "100%";
 }
 
-function unlockBody() {
-    document.body.classList.remove("menu-open");
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-    document.body.style.width = "";
-}
-
 function closeMenu(targetElement = null) {
-    if (!menuToggle || !mainNav || !menuIsOpen) return;
+    if (!menuToggle || !mainNav) return;
+
+    clearPendingClose();
 
     menuIsOpen = false;
+    isClosing = true;
 
-    // 1. Trigger slide-up animation
     mainNav.classList.remove("is-open");
+    mainNav.classList.add("is-closing");
     menuToggle.classList.remove("is-open");
 
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation menu");
 
-    // 2. Handle scroll unlocking & section navigation
+    if (document.activeElement === menuToggle) {
+        menuToggle.blur();
+    }
+
     if (targetElement) {
-        // Unlock body position immediately so page can scroll to section
         unlockBody();
         window.scrollTo(0, savedScrollPosition);
+        clearPendingClose();
 
-        // Scroll smoothly to target after menu starts sliding up
         setTimeout(() => {
             targetElement.scrollIntoView({ behavior: "smooth" });
-        }, 100);
+        }, 80);
     } else {
-        // Closed without clicking a section link (e.g. toggle button or Escape key)
-        setTimeout(() => {
+        closeTimer = setTimeout(() => {
             unlockBody();
             window.scrollTo(0, savedScrollPosition);
+            clearPendingClose();
         }, 400);
     }
 }
@@ -147,8 +169,11 @@ function closeMenu(targetElement = null) {
 function initMobileMenu() {
     if (!menuToggle || !mainNav) return;
 
-    menuToggle.addEventListener("click", () => {
-        if (menuIsOpen) {
+    menuToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        
+        // Handle clicks during both open state and mid-close transitions
+        if (menuIsOpen || isClosing) {
             closeMenu();
         } else {
             openMenu();
@@ -159,11 +184,10 @@ function initMobileMenu() {
         link.addEventListener("click", (event) => {
             const href = link.getAttribute("href");
 
-            // Check if link points to an anchor section on the current page
             if (href && href.startsWith("#")) {
                 const targetElement = document.querySelector(href);
                 if (targetElement) {
-                    event.preventDefault(); // Prevent instant jump
+                    event.preventDefault();
                     closeMenu(targetElement);
                     return;
                 }
@@ -174,7 +198,7 @@ function initMobileMenu() {
     });
 
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && menuIsOpen) {
+        if (event.key === "Escape" && (menuIsOpen || isClosing)) {
             closeMenu();
         }
     });
@@ -183,7 +207,7 @@ function initMobileMenu() {
     window.addEventListener("resize", () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            if (window.innerWidth >= 769 && menuIsOpen) {
+            if (window.innerWidth >= 769 && (menuIsOpen || isClosing)) {
                 closeMenu();
             }
         }, 150);

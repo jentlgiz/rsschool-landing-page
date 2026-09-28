@@ -38,6 +38,28 @@
     --transition: 300ms ease;
 }
 
+/* =========================================================
+   THEME COLOR VARIABLES
+   ========================================================= */
+
+/* Default State: DARK MODE */
+:root {
+  --bg-color: #0d0d0d;        /* Dark background for menu & page */
+  --text-color: #ffffff;      /* Light text */
+}
+
+/* Light Mode State (activated via [data-theme="light"]) */
+:root[data-theme="light"] {
+  --bg-color: #ffffff;        /* Light background for menu & page */
+  --text-color: #1a1a1a;      /* Dark text */
+}
+
+/* Ensure mobile nav text inherits active theme colors */
+.main-nav a {
+  color: var(--text-color, inherit);
+  transition: color 0.3s ease;
+}
+
 
 /* ================= LIGHT THEME ================= */
 
@@ -203,33 +225,34 @@ p {
 
 /* ================= NAVIGATION ================= */
 
+.menu-toggle {
+  position: relative;
+  z-index: 10000; /* Higher than .main-nav z-index */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .main-nav {
-  /* Positioning: lock to the viewport */
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  height: 100dvh;
   z-index: 9999;
-  
-  /* Background & Layout */
   background-color: var(--bg-color, #ffffff);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  /* Off-screen position: pushed up out of view */
   transform: translateY(-100%);
-  
-  /* Smooth sliding transition */
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
 
-/* Slide down into view when open */
 .main-nav.is-open {
   transform: translateY(0);
+  pointer-events: auto;
+}
+
+.main-nav.is-closing {
+  pointer-events: none;
 }
 
 .main-nav ul {
@@ -237,7 +260,6 @@ p {
     align-items: center;
     gap: 2.5rem;
 }
-
 
 .main-nav a {
     position: relative;
@@ -251,7 +273,6 @@ p {
 
     transition: color var(--transition);
 }
-
 
 .main-nav a::after {
     content: "";
@@ -3119,4 +3140,95 @@ body.menu-open {
         padding: 0.65rem 0.75rem;
     }
 
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION DEFAULT (min-width: 769px)
+   ========================================================= */
+
+/* Hide burger toggle button on desktop */
+.menu-toggle {
+  display: none;
+}
+
+/* Default inline navigation styling for desktop */
+.main-nav {
+  display: flex;
+  position: static;
+  transform: none;
+  pointer-events: auto;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+}
+
+
+/* =========================================================
+   MOBILE MENU OVERLAY (max-width: 768px)
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* Show burger button on mobile viewports */
+  .menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 10000;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Fullscreen slide-down drawer */
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 9999;
+    background-color: var(--bg-color, #ffffff);
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+
+  /* Slide down when opened */
+  .main-nav.is-open {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Transition safeguard while closing */
+  .main-nav.is-closing {
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 9999;
+    
+    /* Use your site's dynamic background CSS variable */
+    background-color: var(--bg-color, var(--color-bg, #000000));
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+    pointer-events: none;
+  }
 }
