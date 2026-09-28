@@ -1,15 +1,28 @@
+/* =========================================================
+   CORE SITE SCRIPT: THEME TOGGLE & MOBILE NAVIGATION
+   ========================================================= */
+
+// DOM Selectors
 const themeToggle = document.querySelector(".theme-toggle");
 const artistPortrait = document.querySelector("#artist-portrait");
+const menuToggle = document.querySelector(".menu-toggle");
+const mainNav = document.querySelector(".main-nav");
+const mainNavLinks = document.querySelectorAll(".main-nav a");
 
+// Constants & State
 const THEME_KEY = "theme";
+const LIGHT_PORTRAIT_SRC = "./assets/images/yves-portfolio-light.webp";
+const DARK_PORTRAIT_SRC = "./assets/images/yves-portfolio.jpg";
 
+let savedScrollPosition = 0;
+let menuIsOpen = false;
 
-/* ================= PORTRAIT ================= */
+/* =========================================================
+   PORTRAIT & THEME MANAGEMENT
+   ========================================================= */
 
 function changePortrait(src, animate = true) {
-    if (!artistPortrait) {
-        return;
-    }
+    if (!artistPortrait) return;
 
     if (!animate) {
         artistPortrait.src = src;
@@ -21,79 +34,59 @@ function changePortrait(src, animate = true) {
     setTimeout(() => {
         artistPortrait.src = src;
 
-        artistPortrait.onload = () => {
+        // Reset state once image finishes loading or if cached
+        const handleImageLoad = () => {
             artistPortrait.classList.remove("is-changing");
+            artistPortrait.removeEventListener("load", handleImageLoad);
         };
+
+        if (artistPortrait.complete) {
+            handleImageLoad();
+        } else {
+            artistPortrait.addEventListener("load", handleImageLoad);
+        }
     }, 300);
 }
 
-
-/* ================= THEME ================= */
-
 function applyTheme(theme, animate = true) {
-    if (theme === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
+    const isLight = theme === "light";
 
-        changePortrait(
-            "./assets/images/yves-portfolio-light.webp",
-            animate
-        );
+    if (isLight) {
+        document.documentElement.setAttribute("data-theme", "light");
+        changePortrait(LIGHT_PORTRAIT_SRC, animate);
     } else {
         document.documentElement.removeAttribute("data-theme");
-
-        changePortrait(
-            "./assets/images/yves-portfolio.jpg",
-            animate
-        );
+        changePortrait(DARK_PORTRAIT_SRC, animate);
     }
 }
 
+function initTheme() {
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    const initialTheme = savedTheme === "light" ? "light" : "dark";
 
-/* ================= INITIAL THEME ================= */
+    applyTheme(initialTheme, false);
 
-const savedTheme = localStorage.getItem(THEME_KEY);
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const currentTheme =
+                document.documentElement.getAttribute("data-theme") === "light"
+                    ? "light"
+                    : "dark";
 
-applyTheme(
-    savedTheme === "light" ? "light" : "dark",
-    false
-);
+            const newTheme = currentTheme === "light" ? "dark" : "light";
 
-
-/* ================= THEME TOGGLE ================= */
-
-if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-        const currentTheme =
-            document.documentElement.getAttribute("data-theme") === "light"
-                ? "light"
-                : "dark";
-
-        const newTheme =
-            currentTheme === "light"
-                ? "dark"
-                : "light";
-
-        applyTheme(newTheme, true);
-
-        localStorage.setItem(THEME_KEY, newTheme);
-    });
+            applyTheme(newTheme, true);
+            localStorage.setItem(THEME_KEY, newTheme);
+        });
+    }
 }
 
-
-/* ================= MOBILE MENU ================= */
-
-const menuToggle = document.querySelector(".menu-toggle");
-const mainNav = document.querySelector(".main-nav");
-const mainNavLinks = document.querySelectorAll(".main-nav a");
-
-let savedScrollPosition = 0;
-let menuIsOpen = false;
-
+/* =========================================================
+   MOBILE MENU NAVIGATION
+   ========================================================= */
 
 function openMenu() {
-    if (!menuToggle || !mainNav || menuIsOpen) {
-        return;
-    }
+    if (!menuToggle || !mainNav || menuIsOpen) return;
 
     savedScrollPosition = window.scrollY;
     menuIsOpen = true;
@@ -102,13 +95,9 @@ function openMenu() {
     menuToggle.classList.add("is-open");
 
     menuToggle.setAttribute("aria-expanded", "true");
-    menuToggle.setAttribute(
-        "aria-label",
-        "Close navigation menu"
-    );
+    menuToggle.setAttribute("aria-label", "Close navigation menu");
 
     document.body.classList.add("menu-open");
-
     document.body.style.position = "fixed";
     document.body.style.top = `-${savedScrollPosition}px`;
     document.body.style.left = "0";
@@ -116,11 +105,8 @@ function openMenu() {
     document.body.style.width = "100%";
 }
 
-
 function closeMenu() {
-    if (!menuToggle || !mainNav || !menuIsOpen) {
-        return;
-    }
+    if (!menuToggle || !mainNav || !menuIsOpen) return;
 
     menuIsOpen = false;
 
@@ -128,13 +114,9 @@ function closeMenu() {
     menuToggle.classList.remove("is-open");
 
     menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute(
-        "aria-label",
-        "Open navigation menu"
-    );
+    menuToggle.setAttribute("aria-label", "Open navigation menu");
 
     document.body.classList.remove("menu-open");
-
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.left = "";
@@ -144,8 +126,8 @@ function closeMenu() {
     window.scrollTo(0, savedScrollPosition);
 }
 
-
-if (menuToggle && mainNav) {
+function initMobileMenu() {
+    if (!menuToggle || !mainNav) return;
 
     menuToggle.addEventListener("click", () => {
         if (menuIsOpen) {
@@ -155,13 +137,11 @@ if (menuToggle && mainNav) {
         }
     });
 
-
     mainNavLinks.forEach((link) => {
         link.addEventListener("click", () => {
             closeMenu();
         });
     });
-
 
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && menuIsOpen) {
@@ -169,10 +149,20 @@ if (menuToggle && mainNav) {
         }
     });
 
-
+    let resizeTimer;
     window.addEventListener("resize", () => {
-        if (window.innerWidth >= 769 && menuIsOpen) {
-            closeMenu();
-        }
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth >= 769 && menuIsOpen) {
+                closeMenu();
+            }
+        }, 150);
     });
 }
+
+/* =========================================================
+   INITIALIZATION
+   ========================================================= */
+
+initTheme();
+initMobileMenu();
